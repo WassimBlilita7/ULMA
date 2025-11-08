@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import AppBarMui from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import Button from '@mui/material/Button';
 import { COLORS } from '../constants/colors';
 import logo from '../assets/logo.png';
-import { getNextTheme, getThemeIcon } from '../utils/themeUtils';
+
+const APPBAR_BG = {
+  light: '#f3f7fa', // Bleu très pâle, doux et lumineux
+  dark: '#232946', // Bleu nuit foncé, harmonieux mais distinct
+};
 
 function AppBar() {
-  // Lire le thème actuel depuis index.html
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
@@ -12,42 +22,109 @@ function AppBar() {
     setTheme(html.getAttribute('data-theme') || 'light');
   }, []);
 
-  const handleThemeChange = () => {
+  const toggleTheme = () => {
     const html = document.documentElement;
-    const next = getNextTheme(theme);
+    const next = theme === 'light' ? 'dark' : 'light';
     html.setAttribute('data-theme', next);
     setTheme(next);
   };
 
-  // Couleurs dynamiques selon le thème
-  const themeColors = COLORS[theme] || COLORS.light;
-  const appBarBg = themeColors.background;
-  const appBarText = themeColors.text;
+  const colors = COLORS[theme] || COLORS.light;
+  const appBarBg = APPBAR_BG[theme];
 
   return (
-    <div className="navbar bg-base-100 shadow-lg px-6 py-2" style={{ background: appBarBg }}>
-      <div className="flex-1 flex items-center gap-3">
-        <img src={logo} alt="ULMA Logo" className="w-10 h-10 rounded-full" />
-        <span className="text-xl font-bold" style={{ color: themeColors.primary }}>
-          ULMA Library
-        </span>
-      </div>
-      <div className="flex-none flex items-center gap-4">
-        <ul className="menu menu-horizontal px-1">
-          <li><a className="hover:text-accent" style={{ color: appBarText }}>Home</a></li>
-          <li><a className="hover:text-accent" style={{ color: appBarText }}>Books</a></li>
-          <li><a className="hover:text-accent" style={{ color: appBarText }}>Students</a></li>
-          <li><a className="hover:text-accent" style={{ color: appBarText }}>Borrow</a></li>
-        </ul>
-        <button
-          className="btn btn-ghost btn-circle"
-          aria-label="Change theme"
-          onClick={handleThemeChange}
+    <AppBarMui position="static" elevation={4} sx={{
+      background: appBarBg,
+      color: colors.text,
+      boxShadow: `0 4px 24px 0 ${colors.primary}22`,
+      transition: 'background 0.7s cubic-bezier(0.4,0,0.2,1), color 0.7s',
+      animation: 'appbar-slide-in 1.1s cubic-bezier(0.4,0,0.2,1)',
+    }}>
+      <Toolbar sx={{ minHeight: 72 }}>
+        <img src={logo} alt="ULMA Logo" style={{ width: 40, height: 40, borderRadius: '50%', marginRight: 16 }} />
+        <Typography
+          variant="h5"
+          sx={{
+            flexGrow: 1,
+            fontFamily: 'Playfair Display, serif',
+            fontWeight: 700,
+            letterSpacing: '2px',
+            color: colors.primary,
+            textShadow: `0 2px 8px ${colors.primary}22`,
+            transition: 'color 0.7s',
+            animation: 'fade-in 1.3s',
+          }}
         >
-          {React.createElement(getThemeIcon(theme))}
-        </button>
-      </div>
-    </div>
+          ULMA Library
+        </Typography>
+        <Button sx={{
+          mx: 1,
+          color: colors.secondary,
+          fontWeight: 600,
+          fontFamily: 'Montserrat, sans-serif',
+          background: 'transparent',
+          textTransform: 'none',
+          fontSize: '1rem',
+          borderRadius: 2,
+          '&:hover': {
+            background: colors.accent + '22',
+            color: colors.accent,
+          },
+          transition: 'background 0.5s, color 0.5s',
+        }}>Accueil</Button>
+        <Button sx={{
+          mx: 1,
+          color: colors.secondary,
+          fontWeight: 600,
+          fontFamily: 'Montserrat, sans-serif',
+          background: 'transparent',
+          textTransform: 'none',
+          fontSize: '1rem',
+          borderRadius: 2,
+          '&:hover': {
+            background: colors.accent + '22',
+            color: colors.accent,
+          },
+          transition: 'background 0.5s, color 0.5s',
+        }}>Livres</Button>
+        <Button sx={{
+          mx: 1,
+          color: colors.secondary,
+          fontWeight: 600,
+          fontFamily: 'Montserrat, sans-serif',
+          background: 'transparent',
+          textTransform: 'none',
+          fontSize: '1rem',
+          borderRadius: 2,
+          '&:hover': {
+            background: colors.accent + '22',
+            color: colors.accent,
+          },
+          transition: 'background 0.5s, color 0.5s',
+        }}>Etudiants</Button>
+        <IconButton
+          edge="end"
+          color="inherit"
+          aria-label="toggle theme"
+          onClick={toggleTheme}
+          sx={{
+            background: colors.surface,
+            color: colors.primary,
+            boxShadow: `0 2px 8px ${colors.secondary}33`,
+            transition: 'background 0.7s, color 0.7s',
+            '&:hover': {
+              background: colors.accent,
+              color: colors.surface,
+              transform: 'scale(1.1)',
+            },
+            animation: 'fade-in 1.5s',
+            ml: 2,
+          }}
+        >
+          {theme === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
+        </IconButton>
+      </Toolbar>
+    </AppBarMui>
   );
 }
 
