@@ -1,20 +1,20 @@
 export const COLORS = {
   light: {
-    primary: '#4F46E5', // Indigo
-    secondary: '#F59E42', // Orange
-    accent: '#10B981', // Emerald
-    background: '#F3F4F6', // Gris clair
+    primary: '#6C63FF', // Violet doux
+    secondary: '#FF6584', // Rose vif
+    accent: '#43E97B', // Vert lumineux
+    background: '#F8FAFC', // Presque blanc
     surface: '#FFFFFF', // Blanc
-    text: '#1F2937', // Gris foncé
-    warning: '#F87171', // Rouge clair
+    text: '#22223B', // Bleu nuit
+    warning: '#FFB400', // Jaune
   },
   dark: {
-    primary: '#6366F1', // Indigo plus clair
-    secondary: '#FBBF24', // Jaune
-    accent: '#34D399', // Vert plus vif
-    background: '#1F2937', // Gris très foncé
-    surface: '#111827', // Presque noir
-    text: '#F3F4F6', // Gris très clair
-    warning: '#F87171', // Rouge clair
+    primary: '#A084E8', // Violet lumineux
+    secondary: '#FF6584', // Rose vif
+    accent: '#43E97B', // Vert lumineux
+    background: '#232946', // Bleu nuit foncé
+    surface: '#121629', // Bleu nuit très foncé
+    text: '#F8FAFC', // Presque blanc
+    warning: '#FFB400', // Jaune
   },
 };

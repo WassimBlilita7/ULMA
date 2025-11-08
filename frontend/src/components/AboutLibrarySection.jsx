@@ -8,23 +8,23 @@ function AboutLibrarySection() {
 
   return (
     <Fade in timeout={900}>
-      <section className="flex flex-col md:flex-row items-center justify-center py-12 px-4 gap-8 w-full" style={{ background: colors.background }}>
+      <section className="flex flex-col md:flex-row items-center justify-center py-16 px-4 gap-12 w-full animate-fade-in" style={{ background: colors.background }}>
         <div className="flex-1 flex justify-center">
           <img
             src={libraryImg}
             alt="Library illustration"
-            className="rounded-2xl shadow-lg w-80 md:w-96"
-            style={{ border: `4px solid ${colors.primary}` }}
+            className="rounded-3xl shadow-2xl w-80 md:w-[420px] scale-100 hover:scale-105 transition-transform duration-700"
+            style={{ border: `5px solid ${colors.secondary}` }}
           />
         </div>
         <div className="flex-1 flex flex-col justify-center items-start">
-          <h3 className="text-3xl font-bold mb-4" style={{ color: colors.primary }}>
+          <h3 className="text-4xl font-extrabold mb-6 font-serif animate-slide-in" style={{ color: colors.primary, letterSpacing: '2px' }}>
             About ULMA Library
           </h3>
-          <p className="text-lg mb-2" style={{ color: colors.text }}>
+          <p className="text-xl mb-4 font-medium font-sans animate-fade-in" style={{ color: colors.text }}>
             ULMA Library is a modern university library management system designed for students and staff. It offers intuitive tools for book management, borrowing, and statistics.
           </p>
-          <ul className="list-disc pl-5" style={{ color: colors.accent }}>
+          <ul className="list-disc pl-6 text-lg font-mono animate-fade-in" style={{ color: colors.accent }}>
             <li>Student registration and management</li>
             <li>Book catalog and search</li>
             <li>Borrowing and returning with automatic reminders</li>
