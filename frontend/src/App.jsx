@@ -2,6 +2,7 @@ import './App.css'
 import AppBar from './components/AppBar';
 import HomeContent from './components/HomeContent';
 import AboutLibrarySection from './components/AboutLibrarySection';
+import BooksContainer from './components/BooksContainer';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <AppBar />
       <HomeContent />
       <AboutLibrarySection />
+      <BooksContainer />
     </>
   )
 }
