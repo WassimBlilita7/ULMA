@@ -8,28 +8,58 @@ function AboutLibrarySection() {
 
   return (
     <Fade in timeout={900}>
-      <section className="flex flex-col md:flex-row items-center justify-center py-16 px-4 gap-12 w-full animate-fade-in" style={{ background: colors.background }}>
-        <div className="flex-1 flex justify-center">
-          <img
-            src={libraryImg}
-            alt="Library illustration"
-            className="rounded-3xl shadow-2xl w-80 md:w-[420px] scale-100 hover:scale-105 transition-transform duration-700"
-            style={{ border: `5px solid ${colors.secondary}` }}
-          />
+      <section className="flex flex-col md:flex-row items-center justify-center py-20 px-6 gap-16 w-full animate-fade-in" style={{ 
+        background: `linear-gradient(135deg, ${colors.background} 0%, ${colors.surface} 100%)`,
+      }}>
+        <div className="flex-1 flex justify-center group">
+          <div className="relative">
+            <div className="absolute -inset-4 rounded-3xl opacity-30 blur-2xl transition-all duration-700 group-hover:opacity-50" style={{
+              background: `linear-gradient(135deg, ${colors.primary}, ${colors.accent})`,
+            }}></div>
+            <img
+              src={libraryImg}
+              alt="Library illustration"
+              className="relative rounded-3xl shadow-2xl w-80 md:w-[480px] scale-100 group-hover:scale-105 transition-all duration-700"
+              style={{ 
+                border: `3px solid ${colors.accent}`,
+                boxShadow: `0 20px 60px ${colors.primary}25`,
+              }}
+            />
+          </div>
         </div>
-        <div className="flex-1 flex flex-col justify-center items-start">
-          <h3 className="text-4xl font-extrabold mb-6 font-serif animate-slide-in" style={{ color: colors.primary, letterSpacing: '2px' }}>
+        <div className="flex-1 flex flex-col justify-center items-start max-w-xl">
+          <h3 className="text-5xl font-extrabold mb-8 font-serif animate-slide-in" style={{ 
+            color: colors.primary, 
+            letterSpacing: '1px',
+            textShadow: `0 4px 12px ${colors.primary}22`,
+          }}>
             About ULMA Library
           </h3>
-          <p className="text-xl mb-4 font-medium font-sans animate-fade-in" style={{ color: colors.text }}>
+          <p className="text-xl mb-8 font-medium font-sans animate-fade-in leading-relaxed" style={{ 
+            color: colors.text,
+            opacity: 0.9,
+          }}>
             ULMA Library is a modern university library management system designed for students and staff. It offers intuitive tools for book management, borrowing, and statistics.
           </p>
-          <ul className="list-disc pl-6 text-lg font-mono animate-fade-in" style={{ color: colors.accent }}>
-            <li>Student registration and management</li>
-            <li>Book catalog and search</li>
-            <li>Borrowing and returning with automatic reminders</li>
-            <li>Real-time statistics and visualizations</li>
-          </ul>
+          <div className="space-y-4 w-full">
+            {[
+              { icon: '📚', text: 'Student registration and management' },
+              { icon: '🔍', text: 'Book catalog and search' },
+              { icon: '📖', text: 'Borrowing and returning with automatic reminders' },
+              { icon: '📊', text: 'Real-time statistics and visualizations' },
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl transition-all duration-500 hover:translate-x-2 animate-fade-in" style={{
+                background: colors.surface,
+                border: `1px solid ${colors.accent}22`,
+                boxShadow: `0 4px 16px ${colors.primary}10`,
+              }}>
+                <span className="text-3xl">{item.icon}</span>
+                <p className="text-lg font-sans flex-1" style={{ color: colors.text }}>
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </Fade>
